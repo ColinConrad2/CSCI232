@@ -32,8 +32,13 @@ public class Term implements Comparable<Term> {
     public static Comparator<Term> byPrefixOrder(int r) {
         return new Comparator<Term>() {
             public int compare(Term v, Term w) {
-                //FIXME
+                //So isolate prefix which is substring through r then compare.
+                String prefixV = v.query.substring(0, Math.min(r, v.query.length())); // This way ensures we never access characters beyond query length.
+                String prefixW = w.query.substring(0, Math.min(r, w.query.length()));
+
+                return prefixV.compareTo(prefixW);
             }
+
         };
     }
 
@@ -45,7 +50,7 @@ public class Term implements Comparable<Term> {
     // Returns a string representation of this term in the following format:
     // the weight, followed by a tab, followed by the query.
     public String toString() {
-        return null; //FIXME
+        return weight + "/t" + query;
     }
 
     // unit testing (you should have some Unit Testing here to confirm that your methods work); for example...
