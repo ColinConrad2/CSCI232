@@ -5,16 +5,28 @@ public class BinarySearchDeluxe {
 
     
     // Returns the index of the first key in a[] that equals the search key, or -1 if no such key.
+    // Iterate through array comparing indecies to key until key is matched literally lets just use compare method.
     public static <Key> int firstIndexOf(Key[] a, Key key, Comparator<Key> comparator) {
-
-        return -999; //FIXME
+        for (int i = 0; i <a.length; i++){
+            if (comparator.compare(a[i], key)  == 0){
+                return i; //Return first occurrence of the key.
+            }
+        }
+        return -1; // if we get to this point then no a[i] matches key so -1
            
     }
 
     
     // Returns the index of the last key in a[] that equals the search key, or -1 if no such key.
+    // So exactly the same as the last but starting from the end of our data.
     public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator) {
-        return -999; //FIXME
+        for (int j = a.length -1; j >= 0; j-- ){
+            if (comparator.compare(a[j], key) == 0){
+                return j;
+            }
+
+        }
+        return -1;
     }
 
     // unit testing (you should have some Unit Testing here to confirm that your methods work); for example...
